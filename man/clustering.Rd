@@ -5,12 +5,22 @@
 \title{This function is used to calculate and represent clusters based on the
 standard or Euclidean distance}
 \usage{
-clustering(data, data_form, numb_cluster, elbow_rule, optimal_k, Graph)
+clustering(
+  data,
+  data_form,
+  improve_data,
+  numb_cluster,
+  elbow_rule,
+  optimal_k,
+  Graph
+)
 }
 \arguments{
 \item{data}{Your dataset with the variables from which you want to obtain clusters by columns}
 
 \item{data_form}{Indicate where are your variables: 'r' is row and default is column}
+
+\item{improve_data}{You have to choice: delete NA values ('NonNA'), sustitute by median values ('Median') or leave as it is (anything difference)}
 
 \item{numb_cluster}{Number of clusters that you want}
 
