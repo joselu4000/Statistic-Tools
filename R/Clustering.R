@@ -4,6 +4,7 @@
 #'
 #' @param data Your dataset with the variables from which you want to obtain clusters by columns
 #' @param data_form Indicate where are your variables: 'r' is row and default is column
+#' @param improve_data You have to choice: delete NA values ('NonNA'), sustitute by median values ('Median') or leave as it is (anything difference)
 #' @param numb_cluster Number of clusters that you want
 #' @param elbow_rule You can decide whether to use (TRUE) or not (FALSE) the associated elbow rule
 #' @param optimal_k You can decide whether to use (TRUE) or not (FALSE) the associated optimal elbow rule
@@ -19,14 +20,19 @@
 #' 
 #' @export
 # Data must contain its variables by column
-clustering <- function(data, data_form, numb_cluster, elbow_rule, optimal_k, Graph){
+clustering <- function(data, data_form, improve_data, numb_cluster, elbow_rule, optimal_k, Graph){
     memory <- list()
     # Data lecture and clear
-    data <- na.omit(data)
-    lim <- ncol(data)
-    if (data_form == 'r'){
-      data <- t(data)
-      lim <- nrow(data)-1
+    if (improve_data == 'NonNA'){
+      data <- na.omit(data)
+      lim <- ncol(data)
+      if (data_form == 'r'){
+        data <- t(data)
+        lim <- nrow(data)-1
+      }
+    }
+    if (improve_data == 'Median'){
+      data <- susmedian(data, data_form)
     }
     # Cluster analysis with a pre-established number 
     k <- numb_cluster
