@@ -16,12 +16,13 @@
 #' # Previously install and read: "mlbench"
 #' data("iris")
 #' data <- iris[,-5]
-#' CK <- clustering(data, 'r', numb_cluster = 3, elbow_rule = TRUE, optimal_k = TRUE, Graph = TRUE)
+#' CK <- clustering(data, 'r', improve_data = FALSE, numb_cluster = 3, elbow_rule = TRUE, optimal_k = TRUE, Graph = TRUE)
 #' 
 #' @export
 # Data must contain its variables by column
 clustering <- function(data, data_form, improve_data, numb_cluster, elbow_rule, optimal_k, Graph){
     memory <- list()
+    lim <- ncol(data)
     # Data lecture and clear
     if (improve_data == 'NonNA'){
       data <- na.omit(data)
