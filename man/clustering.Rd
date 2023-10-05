@@ -41,6 +41,6 @@ standard or Euclidean distance
 # Previously install and read: "mlbench"
 data("iris")
 data <- iris[,-5]
-CK <- clustering(data, 'r', numb_cluster = 3, elbow_rule = TRUE, optimal_k = TRUE, Graph = TRUE)
+CK <- clustering(data, 'r', improve_data = FALSE, numb_cluster = 3, elbow_rule = TRUE, optimal_k = TRUE, Graph = TRUE)
 
 }
